@@ -16,6 +16,7 @@ class User(AbstractBaseUser, PermissionsMixin):
     is_email_verified = models.BooleanField(default=False)
     terms_agreement = models.BooleanField(default=False)
 
+    avatar =  models.ImageField(upload_to="avatars/", null=True)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
@@ -28,4 +29,5 @@ class User(AbstractBaseUser, PermissionsMixin):
     def full_name(self):
         return f"{self.first_name} {self.last_name}"
 
-    #def __str__(self):
+    def __str__(self):
+        return self.full_name
