@@ -5,15 +5,19 @@ import uuid
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
-        ('accounts', '0004_alter_user_id'),
+        ("accounts", "0004_alter_user_id"),
     ]
 
     operations = [
         migrations.AlterField(
-            model_name='user',
-            name='id',
-            field=models.UUIDField(default=uuid.UUID('3148adb0-44f5-491c-a720-a21a85b895c9'), primary_key=True, serialize=False, unique=True),
+            model_name="user",
+            name="id",
+            field=models.UUIDField(
+                default=uuid.UUID("3148adb0-44f5-491c-a720-a21a85b895c9"),
+                primary_key=True,
+                serialize=False,
+                unique=True,
+            ),
         ),
     ]

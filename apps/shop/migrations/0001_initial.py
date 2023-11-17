@@ -8,7 +8,6 @@ import uuid
 
 
 class Migration(migrations.Migration):
-
     initial = True
 
     dependencies = [
@@ -17,48 +16,105 @@ class Migration(migrations.Migration):
 
     operations = [
         migrations.CreateModel(
-            name='Category',
+            name="Category",
             fields=[
-                ('id', models.UUIDField(default=uuid.UUID('c6deaf2c-b02c-4ca4-8ffb-ae610886871c'), primary_key=True, serialize=False, unique=True)),
-                ('created_at', models.DateTimeField(auto_now_add=True)),
-                ('updated_at', models.DateTimeField(auto_now=True)),
-                ('name', models.CharField(max_length=100)),
-                ('slug', autoslug.fields.AutoSlugField(always_update=True, editable=False, populate_from='name', unique=True)),
+                (
+                    "id",
+                    models.UUIDField(
+                        default=uuid.UUID("c6deaf2c-b02c-4ca4-8ffb-ae610886871c"),
+                        primary_key=True,
+                        serialize=False,
+                        unique=True,
+                    ),
+                ),
+                ("created_at", models.DateTimeField(auto_now_add=True)),
+                ("updated_at", models.DateTimeField(auto_now=True)),
+                ("name", models.CharField(max_length=100)),
+                (
+                    "slug",
+                    autoslug.fields.AutoSlugField(
+                        always_update=True,
+                        editable=False,
+                        populate_from="name",
+                        unique=True,
+                    ),
+                ),
             ],
             options={
-                'abstract': False,
+                "abstract": False,
             },
         ),
         migrations.CreateModel(
-            name='Product',
+            name="Product",
             fields=[
-                ('id', models.UUIDField(default=uuid.UUID('c6deaf2c-b02c-4ca4-8ffb-ae610886871c'), primary_key=True, serialize=False, unique=True)),
-                ('created_at', models.DateTimeField(auto_now_add=True)),
-                ('updated_at', models.DateTimeField(auto_now=True)),
-                ('name', models.CharField(max_length=50)),
-                ('desc', models.TextField(verbose_name='Description')),
-                ('price', models.DecimalField(decimal_places=2, max_digits=10)),
-                ('in_stock', models.PositiveIntegerField()),
-                ('image', models.ImageField(upload_to='products/')),
-                ('category', models.ForeignKey(null=True, on_delete=django.db.models.deletion.SET_NULL, to='shop.category')),
+                (
+                    "id",
+                    models.UUIDField(
+                        default=uuid.UUID("c6deaf2c-b02c-4ca4-8ffb-ae610886871c"),
+                        primary_key=True,
+                        serialize=False,
+                        unique=True,
+                    ),
+                ),
+                ("created_at", models.DateTimeField(auto_now_add=True)),
+                ("updated_at", models.DateTimeField(auto_now=True)),
+                ("name", models.CharField(max_length=50)),
+                ("desc", models.TextField(verbose_name="Description")),
+                ("price", models.DecimalField(decimal_places=2, max_digits=10)),
+                ("in_stock", models.PositiveIntegerField()),
+                ("image", models.ImageField(upload_to="products/")),
+                (
+                    "category",
+                    models.ForeignKey(
+                        null=True,
+                        on_delete=django.db.models.deletion.SET_NULL,
+                        to="shop.category",
+                    ),
+                ),
             ],
             options={
-                'abstract': False,
+                "abstract": False,
             },
         ),
         migrations.CreateModel(
-            name='Review',
+            name="Review",
             fields=[
-                ('id', models.UUIDField(default=uuid.UUID('c6deaf2c-b02c-4ca4-8ffb-ae610886871c'), primary_key=True, serialize=False, unique=True)),
-                ('created_at', models.DateTimeField(auto_now_add=True)),
-                ('updated_at', models.DateTimeField(auto_now=True)),
-                ('rating', models.SmallIntegerField(choices=[(5, 5), (4, 4), (3, 3), (2, 2), (1, 1)])),
-                ('text', models.TextField()),
-                ('product', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='reviews', to='shop.product')),
-                ('user', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to=settings.AUTH_USER_MODEL)),
+                (
+                    "id",
+                    models.UUIDField(
+                        default=uuid.UUID("c6deaf2c-b02c-4ca4-8ffb-ae610886871c"),
+                        primary_key=True,
+                        serialize=False,
+                        unique=True,
+                    ),
+                ),
+                ("created_at", models.DateTimeField(auto_now_add=True)),
+                ("updated_at", models.DateTimeField(auto_now=True)),
+                (
+                    "rating",
+                    models.SmallIntegerField(
+                        choices=[(5, 5), (4, 4), (3, 3), (2, 2), (1, 1)]
+                    ),
+                ),
+                ("text", models.TextField()),
+                (
+                    "product",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        related_name="reviews",
+                        to="shop.product",
+                    ),
+                ),
+                (
+                    "user",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        to=settings.AUTH_USER_MODEL,
+                    ),
+                ),
             ],
             options={
-                'abstract': False,
+                "abstract": False,
             },
         ),
     ]

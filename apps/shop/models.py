@@ -7,6 +7,7 @@ from autoslug import AutoSlugField
 from statistics import mean
 
 
+# this is the category for Class
 class Category(BaseModel):
     name = models.CharField(max_length=100)
     slug = AutoSlugField(populate_from="name", unique=True, always_update=True)
@@ -45,6 +46,7 @@ class Product(BaseModel):
 
     class Meta:
         ordering = ["-created_at"]
+
 
 RATING_CHOICES = ((5, 5), (4, 4), (3, 3), (2, 2), (1, 1))
 
