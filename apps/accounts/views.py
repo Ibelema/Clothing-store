@@ -1,6 +1,7 @@
 from django.shortcuts import redirect, render
 from django.views import View
-from apps.accounts.forms import RegisterForm, LoginForm
+
+from .forms import LoginForm, RegisterForm
 
 
 class RegisterView(View):
@@ -10,7 +11,12 @@ class RegisterView(View):
         return render(request, "accounts/register.html", context)
 
     def post(self, request):
-        return redirect("")
+        form = RegisterForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect("login")
+        context = {"form": form}
+        return render(request, "accounts/register.html", context)
 
 
 class LoginView(View):
