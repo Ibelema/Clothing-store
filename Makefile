@@ -38,7 +38,7 @@ shell:
 	python manage.py shell
 
 sapp:
-	python manage.py startapp
+	python manage.py startapp "$(app)"
 
 reqm:
 	pip install -r requirements.txt
