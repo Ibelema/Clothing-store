@@ -43,7 +43,7 @@
                     <div class="down-content">
                     <a href="#"><h4>{{ product.name }}</h4></a>
                     <h6>${{ product.price }}</h6>
-                    <p>{{ product.desc|truncatechars:100 }}</p>
+                    <p>{{ product.desc|truncatechars:35 }}</p>
                     <ul class="stars">
                         {% for i in rating_range %}
                             <li>
@@ -59,8 +59,7 @@
                     </ul>
                     <span>Reviews ({{product.reviews.count}})</span>
                     </div>
-                </div>
-            </div>
+                </div
         {% endfor %}
     </div>
     </div>
